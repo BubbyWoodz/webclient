@@ -19,4 +19,5 @@ export enum SettingType {
   backup,
   secretinput,
   dropdown,
+  devices,
 }
