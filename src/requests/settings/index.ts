@@ -24,6 +24,24 @@ export async function updateConfig(key: string, value: any) {
     })
 }
 
+export async function updateTranscodePrefs(quality: string) {
+    return await useAxios({
+        url: paths.api.settings.transcode,
+        method: 'PUT',
+        props: {
+            quality,
+        },
+    })
+}
+
+export async function getTranscodePrefs() {
+    const { data } = await useAxios({
+        url: paths.api.settings.transcode,
+        method: 'GET',
+    })
+    return data as { quality: string; format: string }
+}
+
 // SECTION: BACKUPS
 
 export async function getBackups() {
