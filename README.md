@@ -1,6 +1,6 @@
-### Swing music client
+### Reverb web client
 
-This repo contains the client code for the [swing music player](https://github.com/geoffrey45/swingmusic).
+This repo contains the web client code for [Reverb](https://github.com/BubbyWoodz/swingmusic) — a community fork of the [swing music player](https://github.com/swingmx/swingmusic).
 
 ### Setup
 
