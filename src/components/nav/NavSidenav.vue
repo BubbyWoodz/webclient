@@ -20,7 +20,7 @@
                 <span>{{ link.name }}</span>
             </RouterLink>
         </div>
-        <div class="sidenav_footer">Swing Music - v</div>
+        <div class="sidenav_footer">Reverb - v</div>
     </div>
 </template>
 
