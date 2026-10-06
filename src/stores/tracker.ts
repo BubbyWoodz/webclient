@@ -168,6 +168,19 @@ export default defineStore(
             playbackStart.value,
             Math.floor(duration.value / 1000)
           );
+          // bubbywoodz fork (Feature 4): same timer drives Connect state —
+          // one heartbeat serves scrobbling, Connect sync, and device list.
+          import('@/stores/connect').then(({ default: useConnect }) => {
+            const connect = useConnect();
+            const q = useQueue();
+            connect.heartbeat({
+              trackhash: trackhash.value,
+              position_ms: Math.floor(duration.value),
+              is_playing: true,
+              queue: q.tracklist.map((t: any) => t.trackhash).slice(0, 500),
+              queue_index: q.index,
+            });
+          }).catch(() => {});
         }
       }, 30000);
     }
