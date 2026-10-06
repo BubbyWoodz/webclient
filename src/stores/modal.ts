@@ -8,7 +8,6 @@ export enum ModalOptions {
     newPlaylist,
     page,
     updatePlaylist,
-    playlistArtwork,
     deletePlaylist,
     SetIP,
     rootDirsPrompt,
