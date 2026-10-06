@@ -62,6 +62,16 @@
                     >
                         {{ generatingPlaylist ? 'Creating...' : `Create Top ${playlistLimit} Playlist` }}
                     </button>
+                    <button
+                        v-if="viewMode === 'year' && data"
+                        class="highlights-btn"
+                        @click="showReel = true"
+                    >
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="highlights-icon">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                        Play Highlights
+                    </button>
                 </div>
             </section>
 
@@ -251,6 +261,13 @@
             <p>No listening data for this period yet.</p>
             <p class="empty-hint">Play some music and check back soon.</p>
         </div>
+
+        <HighlightReel
+            v-if="showReel && yearlyData"
+            :year="selectedYear"
+            :data="yearlyData"
+            @close="showReel = false"
+        />
     </div>
 </template>
 
@@ -268,6 +285,7 @@ import {
     type ReplayMonthly,
     type ReplayYearly,
 } from '@/requests/replay'
+import HighlightReel from './HighlightReel.vue'
 
 
 const router = useRouter()
@@ -282,6 +300,7 @@ const loading = ref(true)
 const error = ref<string | null>(null)
 const generatingPlaylist = ref(false)
 const playlistLimit = ref(100)
+const showReel = ref(false)
 
 const monthLabel = computed(() => {
     const d = new Date(selectedYear.value, selectedMonth.value - 1)
@@ -291,6 +310,10 @@ const monthLabel = computed(() => {
 function isYearly(d: ReplayMonthly | ReplayYearly): d is ReplayYearly {
     return 'top_genres' in d
 }
+
+const yearlyData = computed<ReplayYearly | null>(() => {
+    return data.value && isYearly(data.value) ? data.value : null
+})
 
 function monthName(m: number): string {
     return new Date(2000, m - 1).toLocaleDateString(undefined, { month: 'long' })
@@ -540,6 +563,31 @@ onMounted(async () => {
 .playlist-btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+.highlights-btn {
+    background: transparent;
+    color: var(--accent, #ff5e3a);
+    border: 2px solid var(--accent, #ff5e3a);
+    border-radius: 999px;
+    padding: 0.65rem 1.4rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.15s, color 0.15s;
+}
+
+.highlights-btn:hover {
+    background: var(--accent, #ff5e3a);
+    color: #fff;
+}
+
+.highlights-icon {
+    width: 18px;
+    height: 18px;
 }
 
 .replay-section {
