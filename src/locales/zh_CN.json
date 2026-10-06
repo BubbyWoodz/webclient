@@ -44,7 +44,7 @@
   "BottomBar": {
     "Favorite": "收藏",
     "GoToNowPlaying": "前往正在播放",
-    "PlaceholderArtist": "欢迎使用 Swing Music",
+    "PlaceholderArtist": "欢迎使用 Reverb",
     "PlaceholderTitle": "你好",
     "RepeatOptions": {
       "All": "全部重复",
@@ -89,7 +89,7 @@
     "Album": "专辑",
     "AlbumArtist": "专辑艺术家",
     "All": "全部",
-    "AppTitle": "Swing Music",
+    "AppTitle": "Reverb",
     "Appearance": "外观",
     "Appearances": "参与作品",
     "Artist": "艺术家",
@@ -163,7 +163,7 @@
     "Settings": "设置",
     "SimilarArtists": "相似艺术家",
     "Singles": "EP 和单曲",
-    "SwingMusic": "Swing Music",
+    "SwingMusic": "Reverb",
     "Title": "标题",
     "TopResult": "最佳结果",
     "Track": "曲目",
@@ -356,7 +356,7 @@
     },
     "Finish": {
       "ConfirmButton": "点击下方按钮进入你的媒体库。",
-      "Processing": "Swing Music 正在扫描你的音乐文件夹，请稍候...",
+      "Processing": "Reverb 正在扫描你的音乐文件夹，请稍候...",
       "TitleAlmostDone": "快完成了！",
       "TitleDone": "一切就绪！🎉"
     },
@@ -369,7 +369,7 @@
       "HomeDirDesc": "扫描以下位置的所有文件夹：",
       "SpecificFolder": "指定目录",
       "Title": "配置音乐文件夹",
-      "TitleDesc": "你希望 Swing Music 在哪里查找音乐？"
+      "TitleDesc": "你希望 Reverb 在哪里查找音乐？"
     },
     "Welcome": {
       "GetStarted": "开始使用",
@@ -379,7 +379,7 @@
   },
   "Pairing": {
     "ErrorPairingCode": "获取配对码时出错。错误代码：{res}",
-    "ScanQRCode": "在 Swing Music 应用中扫描二维码以与此服务器配对。"
+    "ScanQRCode": "在 Reverb 应用中扫描二维码以与此服务器配对。"
   },
   "PlaylistView": {
     "AllTracks": "所有曲目",
@@ -470,7 +470,7 @@
   },
   "Settings": {
     "About": {
-      "Developer": "Swing Music 是 {link} 在 GitHub 上用心开发的作品。如果你喜欢这款软件，欢迎在 GitHub 上点个星。希望你使用它时和我开发它时一样开心。😁🤗",
+      "Developer": "Reverb 是 {link} 在 GitHub 上用心开发的作品。如果你喜欢这款软件，欢迎在 GitHub 上点个星。希望你使用它时和我开发它时一样开心。😁🤗",
       "GetInTouchDescription": "如果你喜欢我的作品并想打个招呼，我很乐意听到你的声音。",
       "GetInTouchTitle": "联系我们",
       "LicenseDesc": "管理你的许可证密钥、订阅和已授权设备",
@@ -533,7 +533,7 @@
       "RestoreBackup": "恢复备份",
       "RestoreButton": "恢复",
       "ScrobbleCount": "{count} 条 scrobble 记录",
-      "ThankYouMessage": "感谢你赞助 Swing Music！",
+      "ThankYouMessage": "感谢你赞助 Reverb！",
       "Title": "备份"
     },
     "Cancel": "取消",
@@ -664,7 +664,7 @@
       "NoActiveSub": "没有有效订阅",
       "NoActiveSubDesc": "订阅以解锁所有高级功能。\n 使用下方链接浏览可用方案和权益。",
       "NoActivity": "没有活动",
-      "NoGithubLogin": "Swing Music 高级版对所有 GitHub 赞助者开放。使用 GitHub 登录即可获取。",
+      "NoGithubLogin": "Reverb 高级版对所有 GitHub 赞助者开放。使用 GitHub 登录即可获取。",
       "RefreshStatus": "刷新状态",
       "Renewal": "续订",
       "Revoke": "撤销",
@@ -673,7 +673,7 @@
       "Sponsorship": "赞助",
       "Status": "状态",
       "Subscription": "订阅",
-      "ThanksCustName": "你好 @{cust}！你已可以使用 Swing Music 高级版。",
+      "ThanksCustName": "你好 @{cust}！你已可以使用 Reverb 高级版。",
       "ThanksWithHearts": "感谢你的支持。❤️❤️",
       "Tier": "等级",
       "UnknownError": "发生未知错误",
@@ -701,15 +701,15 @@
     "Plugins": {
       "LastFM": {
         "ApiKey": {
-          "Description": "用于替代 Swing Music 默认值向 Last.fm 进行身份验证",
+          "Description": "用于替代 Reverb 默认值向 Last.fm 进行身份验证",
           "Title": "使用自定义 API 密钥"
         },
         "ApiSecret": {
-          "Description": "用于替代 Swing Music 默认值为你的 scrobble 提交签名",
+          "Description": "用于替代 Reverb 默认值为你的 scrobble 提交签名",
           "Title": "使用自定义 API Secret"
         },
         "Authorize": {
-          "Description": "允许 Swing Music 访问你的 Last.fm 账户",
+          "Description": "允许 Reverb 访问你的 Last.fm 账户",
           "Title": "连接你的账户"
         },
         "Description": "将你的音乐 scrobble 到 Last.fm",
