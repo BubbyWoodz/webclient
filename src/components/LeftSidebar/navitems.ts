@@ -8,6 +8,7 @@ import PlaylistSvg from "@/assets/icons/playlist-1.svg";
 import SearchSvg from "@/assets/icons/search.svg";
 import SettingsSvg from "@/assets/icons/settings.svg";
 import HomeSvg from "@/assets/icons/home.svg";
+import ChartSvg from "@/assets/icons/chart.svg";
 import { useT } from "@/i18n";
 
 export const useNavItems = () => {
@@ -53,6 +54,11 @@ export const useNavItems = () => {
     },
     favorites,
     playlists,
+    {
+      name: 'Replay',
+      route_name: Routes.Replay,
+      icon: ChartSvg,
+    },
     {
       separator: true,
     },

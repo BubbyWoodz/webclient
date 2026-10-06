@@ -48,15 +48,50 @@ export function sendLogData(
   trackhash: string,
   duration: number,
   from: From,
-  timestamp: number
+  timestamp: number,
+  retryCount: number = 0
 ) {
   if (window.Worker) {
     const worker = new Worker("/workers/logtrack.js");
 
     const seconds = Math.round(duration / 1000);
     const source = getSource(from);
+
     worker.postMessage({ trackhash, duration: seconds, source, timestamp });
+
+    // Retry with backoff on failure (bubbywoodz fork: Feature 3 client contract)
+    // The worker is fire-and-forget; we retry by re-sending if the page is
+    // still open. True offline queue requires service worker (future).
+    worker.onerror = () => {
+      if (retryCount < 3) {
+        const delay = Math.pow(2, retryCount) * 1000;
+        setTimeout(() => {
+          sendLogData(trackhash, duration, from, timestamp, retryCount + 1);
+        }, delay);
+      }
+    };
   }
+}
+
+export function sendNowPlaying(
+  trackhash: string,
+  timestamp: number,
+  position: number
+) {
+  // Fire-and-forget heartbeat; safe to drop on failure
+  fetch("/logger/now-playing", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ trackhash, timestamp, position }),
+    credentials: "include",
+  }).catch(() => {});
+}
+
+export function clearNowPlaying() {
+  fetch("/logger/now-playing", {
+    method: "DELETE",
+    credentials: "include",
+  }).catch(() => {});
 }
 
 export default defineStore(
@@ -81,12 +116,68 @@ export default defineStore(
 
     const queue = useQueue();
 
+    // bubbywoodz fork (Feature 3): track playback start for timestamp semantics
+    const playbackStart = ref(0);
+    const thresholdSubmitted = ref(false);
+    const nowPlayingInterval = ref<number | null>(null);
+
     function resetData() {
       from.value = useTracklist().from;
       duration.value = 0;
       trackhash.value = queue.currenttrack.trackhash;
       prev_date = Date.now();
-      timestamp.value = 0;
+      // Playback start = now (timestamp semantics: start of playback)
+      playbackStart.value = Math.floor(Date.now() / 1000);
+      timestamp.value = playbackStart.value;
+      thresholdSubmitted.value = false;
+    }
+
+    function getThreshold(trackDurationSecs: number): number {
+      // Last.fm rule: min(duration/2, 240), track must be > 30s
+      if (trackDurationSecs <= 30) return Infinity;
+      return Math.min(trackDurationSecs / 2, 240);
+    }
+
+    function checkThreshold() {
+      // Submit at threshold, not at end (fixes force-quit/tab-close loss)
+      if (thresholdSubmitted.value || !trackhash.value) return;
+
+      const track = queue.currenttrack;
+      const trackLen = track?.duration || 0;
+      const threshold = getThreshold(trackLen);
+      const listenedSecs = duration.value / 1000;
+
+      if (listenedSecs >= threshold) {
+        thresholdSubmitted.value = true;
+        sendLogData(
+          trackhash.value,
+          duration.value,
+          from.value,
+          playbackStart.value
+        );
+      }
+    }
+
+    function startNowPlayingHeartbeat() {
+      stopNowPlayingHeartbeat();
+      // Heartbeat every 30s while playing
+      nowPlayingInterval.value = window.setInterval(() => {
+        if (trackhash.value && !audioSource.playingSource.paused) {
+          sendNowPlaying(
+            trackhash.value,
+            playbackStart.value,
+            Math.floor(duration.value / 1000)
+          );
+        }
+      }, 30000);
+    }
+
+    function stopNowPlayingHeartbeat() {
+      if (nowPlayingInterval.value) {
+        clearInterval(nowPlayingInterval.value);
+        nowPlayingInterval.value = null;
+      }
+      clearNowPlaying();
     }
 
     function updateDuration() {
@@ -113,7 +204,17 @@ export default defineStore(
     function submitData() {
       if (!can_submit) return;
       lockSubmit();
-      sendLogData(trackhash.value, duration.value, from.value, timestamp.value);
+      // Use playback start timestamp (not "now at last timeupdate")
+      // If already submitted at threshold, this is a no-op for counted plays
+      // but still sends sub-threshold data for skip analytics
+      if (!thresholdSubmitted.value) {
+        sendLogData(
+          trackhash.value,
+          duration.value,
+          from.value,
+          playbackStart.value
+        );
+      }
       resetData();
       prevKey.value = key.value;
     }
@@ -121,7 +222,10 @@ export default defineStore(
     function reassignEventListener() {
       if (trackhash.value == "") {
         trackhash.value = queue.currenttrackhash;
+        playbackStart.value = Math.floor(Date.now() / 1000);
       }
+
+      startNowPlayingHeartbeat();
 
       audioSource.playingSource.addEventListener(
         "timeupdate",
@@ -140,6 +244,8 @@ export default defineStore(
           }
 
           updateDuration();
+          // Check if we've hit the play threshold
+          checkThreshold();
         })
       );
     }
