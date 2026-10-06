@@ -107,6 +107,7 @@
                     @submit="setting.action"
                 />
                 <License v-if="setting.type === SettingType.license" />
+                <DevicesList v-if="setting.type === SettingType.devices" />
             </div>
         </div>
     </div>
@@ -118,6 +119,7 @@ import { SettingGroup } from '@/interfaces/settings'
 import { SettingType } from '@/settings/enums'
 
 import ReloadSvg from '@/assets/icons/reload.svg'
+import DevicesList from './Components/DevicesList.vue'
 import List from './Components/List.vue'
 import LockedNumberInput from './Components/LockedNumberInput.vue'
 import NumberInput from './Components/NumberInput.vue'
