@@ -264,20 +264,6 @@ export async function removeTracks(pid: number, tracks: { trackhash: string; ind
     new Notification(t('Requests.Playlists.TrackRemovedError'), NotifType.Error)
 }
 
-export async function removeBannerImage(playlistid: number) {
-    const { data, status } = await useAxios({
-        url: paths.api.playlist.base + `/${playlistid}/remove-img`,
-        method: 'DELETE',
-    })
-
-    if (status === 200) {
-        new Notification(t('Requests.Playlists.BannerImageRemoved'))
-        return data.playlist as Playlist
-    }
-
-    new Notification(t('Requests.Playlists.BannerImageRemovedError'), NotifType.Error)
-}
-
 // ======== REVERB: dedicated custom artwork endpoints ========
 
 /**
