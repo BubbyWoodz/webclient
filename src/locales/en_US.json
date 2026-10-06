@@ -512,9 +512,11 @@
         "320": "320kbps",
         "640Flac": "Medium (640kbps) (FLAC)",
         "96": "96kbps",
-        "Description": "Choose the streaming quality of the music",
+        "Description": "Choose the streaming quality. Auto only transcodes when the format requires it.",
         "Original": "Original",
-        "Title": "Streaming quality"
+        "Title": "Streaming quality",
+        "Auto": "Auto",
+        "192": "192kbps"
       },
       "Title": "Audio",
       "UseCrossfade": {
