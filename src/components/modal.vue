@@ -34,12 +34,6 @@
                 @hideModal="hideModal"
                 @setTitle="setTitle"
             />
-            <PlaylistArtwork
-                v-if="modal.component == modal.options.playlistArtwork"
-                v-bind="modal.props"
-                @hideModal="hideModal"
-                @setTitle="setTitle"
-            />
             <div v-if="modal.component == modal.options.deletePlaylist">
                 <ConfirmModal
                     :text="$t('Modal.DeletePlaylist')"
@@ -63,7 +57,6 @@ import AuthLogin from './modals/AuthLogin.vue'
 import ConfirmModal from './modals/ConfirmModal.vue'
 import CrudPage from './modals/CrudPage.vue'
 import NewPlaylist from './modals/NewPlaylist.vue'
-import PlaylistArtwork from './modals/playlistArtwork.vue'
 import RootDirsPrompt from './modals/RootDirsPrompt.vue'
 import SetRootDirs from './modals/SetRootDirs.vue'
 import Settings from './modals/Settings.vue'
