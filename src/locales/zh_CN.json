@@ -509,9 +509,11 @@
         "320": "320kbps",
         "640Flac": "中 (640kbps) (FLAC)",
         "96": "96kbps",
-        "Description": "选择音乐的流媒体质量",
+        "Description": "选择流媒体质量。自动模式仅在格式需要时转码。",
         "Original": "原始",
-        "Title": "流媒体质量"
+        "Title": "流媒体质量",
+        "Auto": "自动",
+        "192": "192kbps"
       },
       "Title": "音频",
       "UseCrossfade": {
