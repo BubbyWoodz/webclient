@@ -149,6 +149,9 @@ export const paths = {
             get updateConfig() {
                 return this.base + '/update'
             },
+            get transcode() {
+                return this.base + '/transcode'
+            },
             get licenseInfo(){
                 return this.base + '/license/status'
             },
