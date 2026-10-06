@@ -6,7 +6,7 @@ import { useFuse } from '@/utils'
 import { paths } from '@/config'
 import { FuseTrackOptions } from '@/enums'
 import { Artist, FuseResult, Playlist, Track } from '@/interfaces'
-import { getPlaylist, removeBannerImage } from '@/requests/playlists'
+import { getPlaylist, removeBannerImage, uploadPlaylistArtwork } from '@/requests/playlists'
 import setColorsToStore from '@/utils/colortools/setColorsToStore'
 import { Routes, router } from '@/router'
 import { track_limit } from '../content-width'
@@ -61,6 +61,22 @@ export default defineStore('playlist-tracks', {
             this.extractColors()
 
             this.createImageLink()
+        },
+        /**
+         * Reverb: uploads custom artwork via the dedicated /artwork endpoint,
+         * then refreshes the playlist info so the new image shows everywhere.
+         */
+        async uploadArtwork(file: File) {
+            const image = await uploadPlaylistArtwork(this.info.id, file)
+
+            if (!image) return false
+
+            // re-fetch so has_image/thumb/images are consistent
+            const { duration } = this.info
+            await this.fetchAll(this.info.id, true)
+            this.info = { ...this.info, duration }
+
+            return true
         },
 
         /**
