@@ -182,7 +182,9 @@
     "top": "top",
     "track": "track | tracks",
     "update": "update",
-    "upload": "upload"
+    "upload": "upload",
+    "Cancel": "Cancel",
+    "Save": "Save"
   },
   "ConfirmModal": {
     "Cancel": "Cancel",
@@ -270,8 +272,7 @@
     "MasterAudioBitrate": "Master audio bitrate - {bitrate} Kbps"
   },
   "Menus": {
-    "Album": {
-    },
+    "Album": {},
     "Artist": {
       "ThisIsPlaylist": "This is {artist}",
       "PlayNext": "Play next"
@@ -323,7 +324,8 @@
   },
   "Modal": {
     "DeletePlaylist": "Are you sure you want to permanently delete this playlist?",
-    "UpdatePlaylist": "Update Playlist"
+    "UpdatePlaylist": "Update Playlist",
+    "PlaylistArtwork": "Playlist Artwork"
   },
   "Nav": {
     "ResetClient": "Reset client"
@@ -847,8 +849,7 @@
       "Searching": "Searching...",
       "Unsynced": "unsynced"
     },
-    "MixLisView": {
-    },
+    "MixLisView": {},
     "MixListView": {
       "MixesBasedOnListening": "{n} mixes • Based on artists you have been listening to",
       "OtherMixes": "Other {type} mixes",
