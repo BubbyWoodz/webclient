@@ -1,5 +1,6 @@
 import lyrics from './lyrics'
 import lastfm from './lastfm'
+import subsonic from './subsonic'
 import { loggedInUserIsAdmin } from '../utils'
 import { SettingCategory } from '@/interfaces/settings'
 
@@ -25,6 +26,12 @@ export default <SettingCategory>{
             icon: LastfmSvg,
             desc: t('Settings.Plugins.LastFM.Description'),
             settings: lastfm,
+        },
+        {
+            title: 'Subsonic API',
+            icon: LastfmSvg,
+            desc: 'Enable Subsonic/OpenSubsonic API access for third-party clients',
+            settings: subsonic,
         },
     ],
 }

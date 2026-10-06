@@ -55,6 +55,9 @@ export default defineStore('settings', {
 
         // plugins
         use_lyrics_plugin: <boolean | undefined>false,
+        // subsonic (bubbywoodz fork)
+        subsonicEnabled: false,
+        subsonicApiKey: <string | null>null,
         lyrics_plugin_settings: {
             auto_download: false,
             overide_unsynced: false,
@@ -92,6 +95,31 @@ export default defineStore('settings', {
         classical_enabled: false,
     }),
     actions: {
+        // subsonic (bubbywoodz fork)
+        async toggleSubsonic() {
+            const newVal = !this.subsonicEnabled
+            await updateConfig({ subsonicEnabled: newVal })
+            this.subsonicEnabled = newVal
+        },
+        async generateSubsonicApiKey() {
+            const res = await useAxios({
+                url: '/rest/apiKey/generate',
+                method: 'POST',
+            })
+            this.subsonicApiKey = res.data?.key || null
+            return this.subsonicApiKey
+        },
+        async fetchSubsonicApiKeyStatus() {
+            try {
+                const res = await useAxios({
+                    url: '/rest/apiKey/status',
+                    method: 'GET',
+                })
+                this.subsonicApiKey = res.data?.has_key ? '••••••••' : null
+            } catch {
+                this.subsonicApiKey = null
+            }
+        },
         mapDbSettings(settings: DBSettings) {
             this.version = settings.version
             this.public_key = settings.serverId
