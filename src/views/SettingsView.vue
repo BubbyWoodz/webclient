@@ -11,7 +11,7 @@
 import { onMounted } from "vue";
 
 import useSettingsStore from "@/stores/settings";
-import { getAllSettings } from "@/requests/settings";
+import { getAllSettings, getTranscodePrefs } from "@/requests/settings";
 import updatePageTitle from "@/utils/updatePageTitle";
 
 import Content from "../components/SettingsView/Content.vue";
@@ -26,5 +26,11 @@ onMounted(() => {
   getAllSettings().then(({ settings }) => {
     store.mapDbSettings(settings);
   });
+  // Sync saved transcode preference from backend (without re-saving)
+  getTranscodePrefs().then((prefs) => {
+    if (prefs?.quality && prefs.quality !== store.streaming_quality) {
+      store.$patch({ streaming_quality: prefs.quality });
+    }
+  }).catch(() => {});
 });
 </script>
