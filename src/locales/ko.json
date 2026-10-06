@@ -509,9 +509,11 @@
         "320": "320kbps",
         "640Flac": "중간 (640kbps) (FLAC)",
         "96": "96kbps",
-        "Description": "음악 스트리밍 품질을 선택하세요",
+        "Description": "스트리밍 품질을 선택하세요. 자동은 형식이 필요할 때만 트랜스코딩합니다.",
         "Original": "원본",
-        "Title": "스트리밍 품질"
+        "Title": "스트리밍 품질",
+        "Auto": "자동",
+        "192": "192kbps"
       },
       "Title": "오디오",
       "UseCrossfade": {
