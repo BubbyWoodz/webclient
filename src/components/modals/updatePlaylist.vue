@@ -131,14 +131,14 @@ function handleFile(file: File) {
 
 let clicked = ref(false)
 
-function update_playlist(e: Event) {
+async function update_playlist(e: Event) {
     const form = document.getElementById('playlist-update-modal') as HTMLFormElement
     const formData = new FormData(form)
 
     const name = formData.get('name') as string
 
     const nameChanged = name !== playlist.value.name
-    const imgChanged = image.value !== undefined
+    const imgChanged = image.value !== undefined && image.value !== null
 
     if (!nameChanged && !imgChanged) {
         emit('hideModal')
@@ -147,14 +147,24 @@ function update_playlist(e: Event) {
 
     clicked.value = true
 
-    formData.append('image', image.value)
+    // Upload new artwork via the dedicated endpoint (with validation + resize)
+    if (imgChanged) {
+        const ok = await pStore.uploadArtwork(image.value)
+        if (!ok) {
+            clicked.value = false
+            return
+        }
+    }
+
+    // Persist name/settings via the update endpoint (image handled above)
+    formData.delete('image')
     formData.append('settings', JSON.stringify(pStore.info.settings))
 
     if (name && name.toString().trim() !== '') {
-        updatePlaylist(playlist.value.id, formData, pStore).then(() => {
-            emit('hideModal')
-        })
+        await updatePlaylist(playlist.value.id, formData, pStore)
     }
+
+    emit('hideModal')
 }
 
 // Future TODO: Implement drag and drop for images here
