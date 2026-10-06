@@ -324,8 +324,7 @@
   },
   "Modal": {
     "DeletePlaylist": "Are you sure you want to permanently delete this playlist?",
-    "UpdatePlaylist": "Update Playlist",
-    "PlaylistArtwork": "Playlist Artwork"
+    "UpdatePlaylist": "Update Playlist"
   },
   "Nav": {
     "ResetClient": "Reset client"
