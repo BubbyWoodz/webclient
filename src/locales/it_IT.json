@@ -509,9 +509,11 @@
         "320": "320kbps",
         "640Flac": "Media (640kbps) (FLAC)",
         "96": "96kbps",
-        "Description": "Scegli la qualità audio durante lo streaming",
+        "Description": "Scegli la qualità dello streaming. Auto transcodifica solo quando il formato lo richiede.",
         "Original": "Originale",
-        "Title": "Qualità streaming"
+        "Title": "Qualità streaming",
+        "Auto": "Automatico",
+        "192": "192kbps"
       },
       "Title": "Audio",
       "UseCrossfade": {
@@ -845,8 +847,7 @@
       "Searching": "Cercando...",
       "Unsynced": "non sincronizzata"
     },
-    "MixLisView": {
-    },
+    "MixLisView": {},
     "MixListView": {
       "MixesBasedOnListening": "{n} mixes • In base agli artisti che hai ascoltato ultimamente",
       "OtherMixes": "Altri mixes di {type}",
