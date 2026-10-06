@@ -40,6 +40,7 @@
 import { vElementSize } from '@vueuse/components'
 import { onStartTyping } from '@vueuse/core'
 import { onBeforeMount, onMounted, Ref, ref } from 'vue'
+import useConnectStore from '@/stores/connect'
 import { useRoute, useRouter } from 'vue-router'
 import { BalancerProvider } from 'vue-wrap-balancer'
 
@@ -194,6 +195,13 @@ onMounted(async () => {
 
     settings.initializeVolume()
     handleRootDirsPrompt()
+
+    // bubbywoodz fork (Feature 4): register this device for Connect sync
+    const connect = useConnectStore()
+    connect.ensureSession().then(() => {
+        connect.startHeartbeatLoop()
+        connect.startStateFeed()
+    })
 
     getAllSettings()
         .then(({ settings: data }) => {
