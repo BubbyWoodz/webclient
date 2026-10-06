@@ -32,10 +32,31 @@
     </div>
 
     <div v-if="!isSmallPhone && info.has_image" class="gradient rounded-lg"></div>
-    <div v-if="info.has_image && useSqrImg" class="sqr_img">
+    <div v-if="info.has_image && useSqrImg" class="sqr_img artwork-hover">
       <img :src="(playlist.info.image as string)" class="rounded-sm" />
+      <button
+        v-if="Number.isInteger(info.id)"
+        class="change-artwork-btn rounded-sm"
+        :title="$t('Common.Change')"
+        @click="openArtworkModal"
+      >
+        <ImageIcon />
+      </button>
     </div>
-    <BannerImages v-if="playlist.info.count && !info.has_image && useSqrImg" class="sqr_img rounded-sm" />
+    <div
+      v-if="playlist.info.count && !info.has_image && useSqrImg"
+      class="artwork-hover"
+    >
+      <BannerImages class="sqr_img rounded-sm" />
+      <button
+        v-if="Number.isInteger(info.id)"
+        class="change-artwork-btn rounded-sm"
+        :title="$t('Common.Change')"
+        @click="openArtworkModal"
+      >
+        <ImageIcon />
+      </button>
+    </div>
     <Info :text-color="textColor" :btn_color="colors.btn" />
     <LastUpdated />
   </div>
@@ -48,15 +69,18 @@ import { computed } from "vue";
 import { pinUnpinPlaylist } from "@/requests/playlists";
 import { isSmallPhone } from "@/stores/content-width";
 import usePStore from "@/stores/pages/playlist";
+import useModal, { ModalOptions } from "@/stores/modal";
 import { getTextColor } from "@/utils/colortools/shift";
 
 import PinFillSvg from "@/assets/icons/pin.fill.svg";
 import PinSvg from "@/assets/icons/pin.svg";
+import ImageIcon from "@/assets/icons/image.svg";
 import BannerImages from "./Header/BannerImages.vue";
 import Info from "./Header/Info.vue";
 import LastUpdated from "./Header/LastUpdated.vue";
 
 const playlist = usePStore();
+const modal = useModal();
 
 const { info, colors } = storeToRefs(playlist);
 
@@ -92,6 +116,11 @@ function pinPlaylist(pid: number) {
       playlist.info.pinned = !playlist.info.pinned;
     }
   });
+}
+
+// Reverb: open the dedicated artwork modal
+function openArtworkModal() {
+  modal.showModal(ModalOptions.playlistArtwork);
 }
 </script>
 
@@ -165,6 +194,42 @@ function pinPlaylist(pid: number) {
       height: 100%;
       width: 100%;
       object-fit: cover;
+    }
+  }
+
+  // Reverb: hover affordance for changing playlist artwork
+  .artwork-hover {
+    position: relative;
+
+    .change-artwork-btn {
+      position: absolute;
+      bottom: 0.5rem;
+      right: 0.5rem;
+      display: flex;
+      place-items: center;
+      place-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border: none;
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.65);
+      color: white;
+      opacity: 0;
+      transition: opacity 0.2s ease-out;
+      z-index: 101;
+
+      svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+
+      &:hover {
+        background-color: $blue;
+      }
+    }
+
+    &:hover .change-artwork-btn {
+      opacity: 1;
     }
   }
 
