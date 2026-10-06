@@ -23,9 +23,9 @@ export default defineConfig({
         enabled: true,
       },
       manifest: {
-        name: "Swing Music",
-        short_name: "Swing Music",
-        description: "Swing Music",
+        name: "Reverb",
+        short_name: "Reverb",
+        description: "Reverb",
         theme_color: "#111",
         icons: [
           {
