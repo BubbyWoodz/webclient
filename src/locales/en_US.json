@@ -45,7 +45,7 @@
     "VolumeLabel": "Volume {percent} percent",
     "Favorite": "Favorite",
     "GoToNowPlaying": "Go to Now Playing",
-    "PlaceholderArtist": "Welcome to Swing Music",
+    "PlaceholderArtist": "Welcome to Reverb",
     "PlaceholderTitle": "Hello there",
     "RepeatOptions": {
       "All": "Repeat all",
@@ -89,7 +89,7 @@
     "Album": "Album | Albums",
     "AlbumArtist": "Album Artist",
     "All": "All",
-    "AppTitle": "Swing Music",
+    "AppTitle": "Reverb",
     "Appearance": "Appearance",
     "Appearances": "Appearances",
     "Artist": "Artist | Artists",
@@ -163,7 +163,7 @@
     "Settings": "Settings",
     "SimilarArtists": "Similar artists",
     "Singles": "EP & Singles",
-    "SwingMusic": "Swing Music",
+    "SwingMusic": "Reverb",
     "Title": "Title",
     "TopResult": "Top Result",
     "Track": "Track | Tracks",
@@ -360,7 +360,7 @@
     },
     "Finish": {
       "ConfirmButton": "Click the button below to continue to your library.",
-      "Processing": "Swing Music is scanning your music folders. Please wait ...",
+      "Processing": "Reverb is scanning your music folders. Please wait ...",
       "TitleAlmostDone": "You're almost there!",
       "TitleDone": "You're all set! 🎉"
     },
@@ -373,7 +373,7 @@
       "HomeDirDesc": "Scan all folders in ",
       "SpecificFolder": "Specific directory",
       "Title": "Configure music folders",
-      "TitleDesc": "Where do you want Swing Music to look for music?"
+      "TitleDesc": "Where do you want Reverb to look for music?"
     },
     "Welcome": {
       "GetStarted": "Get Started",
@@ -383,7 +383,7 @@
   },
   "Pairing": {
     "ErrorPairingCode": "Error fetching pairing code. Error code: {res}",
-    "ScanQRCode": "Scan the QR code from the Swing Music app to pair with this server."
+    "ScanQRCode": "Scan the QR code from the Reverb app to pair with this server."
   },
   "PlaylistView": {
     "AllTracks": "All Tracks",
@@ -474,7 +474,7 @@
   },
   "Settings": {
     "About": {
-      "Developer": "Swing Music is a labor of love developed by {link} on GitHub. If you like this software, a star on GitHub would be nice. Hope you enjoy using it as much as I enjoy building it. 😁🤗",
+      "Developer": "Reverb is a community fork of Swing Music — a labor of love developed by {link} on GitHub. If you like this software, a star on GitHub would be nice. 😁🤗",
       "GetInTouchDescription": "If you like my work, and would like to say hi, I'd like to hear from you.",
       "GetInTouchTitle": "Get in touch",
       "LicenseDesc": "Manage your license key, subscription and authorized devices",
@@ -537,7 +537,7 @@
       "RestoreBackup": "Restore Backup",
       "RestoreButton": "Restore",
       "ScrobbleCount": "{count} scrobble | {count} scrobbles",
-      "ThankYouMessage": "Thank you for sponsoring Swing Music!",
+      "ThankYouMessage": "Thank you for sponsoring Reverb!",
       "Title": "Backup"
     },
     "Cancel": "Cancel",
@@ -669,7 +669,7 @@
       "NoActiveSub": "No Active Subscription",
       "NoActiveSubDesc": "Get a subscription to unlock all premium features.\n Use the link below to browse the available plans and benefits.",
       "NoActivity": "No activity",
-      "NoGithubLogin": "Swing Music Premium is available to all our GitHub Sponsors. Log in with GitHub to get access.",
+      "NoGithubLogin": "Reverb Premium is available to all our GitHub Sponsors. Log in with GitHub to get access.",
       "RefreshStatus": "Refresh Status",
       "Renewal": "Renewal",
       "Revoke": "Revoke",
@@ -678,7 +678,7 @@
       "Sponsorship": "Sponsorship",
       "Status": "Status",
       "Subscription": "Subscription",
-      "ThanksCustName": "Hello @{cust}! You have access to Swing Music Premium.",
+      "ThanksCustName": "Hello @{cust}! You have access to Reverb Premium.",
       "ThanksWithHearts": "Thank you for your support. ❤️❤️",
       "Tier": "Tier",
       "ViewPricing": "View Pricing"
@@ -705,15 +705,15 @@
     "Plugins": {
       "LastFM": {
         "ApiKey": {
-          "Description": "instead of the Swing Music default to authenticate with Last.fm",
+          "Description": "instead of the Reverb default to authenticate with Last.fm",
           "Title": "Use custom API Key"
         },
         "ApiSecret": {
-          "Description": "instead of the Swing Music default to sign your scrobble submission",
+          "Description": "instead of the Reverb default to sign your scrobble submission",
           "Title": "Use custom API Secret"
         },
         "Authorize": {
-          "Description": "Allow Swing Music to access your Last.fm account",
+          "Description": "Allow Reverb to access your Last.fm account",
           "Title": "Connect your account"
         },
         "Description": "Scrobble your music to Last.fm",
