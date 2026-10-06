@@ -45,7 +45,7 @@
     "VolumeLabel": "Volume {percent} percento",
     "Favorite": "Preferita",
     "GoToNowPlaying": "Vai a in riproduzione",
-    "PlaceholderArtist": "Benvenuto a Swing Music",
+    "PlaceholderArtist": "Benvenuto a Reverb",
     "PlaceholderTitle": "Benvenuto",
     "RepeatOptions": {
       "All": "Ripeti tutte",
@@ -89,7 +89,7 @@
     "Album": "Album | Album",
     "AlbumArtist": "Artista Album",
     "All": "Tutte",
-    "AppTitle": "Swing Music",
+    "AppTitle": "Reverb",
     "Appearance": "Aspetto",
     "Appearances": "Comparse",
     "Artist": "Artista | Artisti",
@@ -163,7 +163,7 @@
     "Settings": "Impostazioni",
     "SimilarArtists": "Artisti simili",
     "Singles": "EP & Singles",
-    "SwingMusic": "Swing Music",
+    "SwingMusic": "Reverb",
     "Title": "Titolo",
     "TopResult": "Risultati migliori",
     "Track": "Traccia | Tracce",
@@ -356,7 +356,7 @@
     },
     "Finish": {
       "ConfirmButton": "Clicca il pulsante sotto per proseguire nella tua libreria.",
-      "Processing": "Swing Music sta scansionando le tue cartelle selezionate. Attendi ...",
+      "Processing": "Reverb sta scansionando le tue cartelle selezionate. Attendi ...",
       "TitleAlmostDone": "Ci sei quasi!",
       "TitleDone": "Hai finito! 🎉"
     },
@@ -369,7 +369,7 @@
       "HomeDirDesc": "Scansiona tutte le cartelle in ",
       "SpecificFolder": "Cartella specifica",
       "Title": "Configura cartelle musicali",
-      "TitleDesc": "Dove vuoi che Swing Music cerchi le tue tracce musicali?"
+      "TitleDesc": "Dove vuoi che Reverb cerchi le tue tracce musicali?"
     },
     "Welcome": {
       "GetStarted": "Iniziamo",
@@ -379,7 +379,7 @@
   },
   "Pairing": {
     "ErrorPairingCode": "Errore nel recupero del codice di pairing. Codice di errore: {res}",
-    "ScanQRCode": "Scansiona il QRCode con l'app Swing Music per accedere automaticamente a questo server."
+    "ScanQRCode": "Scansiona il QRCode con l'app Reverb per accedere automaticamente a questo server."
   },
   "PlaylistView": {
     "AllTracks": "Tutte le tracce",
@@ -470,7 +470,7 @@
   },
   "Settings": {
     "About": {
-      "Developer": "Swing Music è un atto d'amore sviluppato su GitHub all'indirizzo {link}. Se questo software ti piace, una stellina sul progetto sarebbe molto apprezzata. Spero tu l'apprezzi tanto quanto mi son divertito a scriverla da zero. 😁🤗",
+      "Developer": "Reverb è un atto d'amore sviluppato su GitHub all'indirizzo {link}. Se questo software ti piace, una stellina sul progetto sarebbe molto apprezzata. Spero tu l'apprezzi tanto quanto mi son divertito a scriverla da zero. 😁🤗",
       "GetInTouchDescription": "Se apprezzi il mio lavoro, e ti piacerebbe salutarmi, mi farebbe piacere un contatto (in inglese).",
       "GetInTouchTitle": "Rimani in contatto",
       "LicenseDesc": "Gestisci la tua chiave di licenza, la tua sottoscrizione e i tuoi dispositivi autorizzati.",
@@ -533,7 +533,7 @@
       "RestoreBackup": "Ripristina Backup",
       "RestoreButton": "Ripristina",
       "ScrobbleCount": "{count} scrobble | {count} scrobbles",
-      "ThankYouMessage": "Ti ringrazio per aver sponsorizzato Swing Music!",
+      "ThankYouMessage": "Ti ringrazio per aver sponsorizzato Reverb!",
       "Title": "Backup"
     },
     "Cancel": "Annulla",
@@ -665,7 +665,7 @@
       "NoActiveSub": "Nessun abbonamento attivo",
       "NoActiveSubDesc": "Ottieni un abbonamento per sbloccare tutte le funzionalità premium.\n Usa il link qui sotto per sfogliare piani e vantaggi disponibili.",
       "NoActivity": "Nessuna attività",
-      "NoGithubLogin": "Il premium di Swing Music è disponibile per tutti i donatori su Github Sponsor. Accedici per averne l'accesso.",
+      "NoGithubLogin": "Il premium di Reverb è disponibile per tutti i donatori su Github Sponsor. Accedici per averne l'accesso.",
       "RefreshStatus": "Aggiorna stato",
       "Renewal": "Rinnova",
       "Revoke": "Revoca",
@@ -674,7 +674,7 @@
       "Sponsorship": "Sponsor",
       "Status": "Stato",
       "Subscription": "Abbonamento",
-      "ThanksCustName": "Ciao @{cust}! Hai accesso a Swing Music Premium.",
+      "ThanksCustName": "Ciao @{cust}! Hai accesso a Reverb Premium.",
       "ThanksWithHearts": "Grazie per il tuo supporto. ❤️❤️",
       "Tier": "Livello",
       "ViewPricing": "Mostra prezzi"
@@ -701,15 +701,15 @@
     "Plugins": {
       "LastFM": {
         "ApiKey": {
-          "Description": "invece di quella usata di default da Swing Music per autenticarsi a Last.fm",
+          "Description": "invece di quella usata di default da Reverb per autenticarsi a Last.fm",
           "Title": "Usa key API personalizzata"
         },
         "ApiSecret": {
-          "Description": "invece di quella usata di default da Swing Music per firmare i tuoi invii scrobble",
+          "Description": "invece di quella usata di default da Reverb per firmare i tuoi invii scrobble",
           "Title": "Usa segreto API personalizzato"
         },
         "Authorize": {
-          "Description": "Connetti il tuo account Last.fm a Swing Music ",
+          "Description": "Connetti il tuo account Last.fm a Reverb ",
           "Title": "Collega il tuo account"
         },
         "Description": "Condividi la tua musica su Last.fm",
