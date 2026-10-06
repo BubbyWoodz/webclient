@@ -1,5 +1,5 @@
 import { Setting } from '@/interfaces/settings'
-import { SettingType } from '../enums'
+import { SettingType } from './enums'
 
 const devicesList = <Setting>{
     title: 'Connected devices',
