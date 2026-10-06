@@ -1,6 +1,6 @@
 <template>
     <div class="aboutswingmusic">
-        <div class="version">Swing Music v{{ settings.version }}</div>
+        <div class="version">Reverb v{{ settings.version }}</div>
         <span v-html="$t('Settings.About.Developer', { link: '<a href=&quot;https://github.com/cwilvx&quot; target=&quot;_blank&quot;>@<u>cwilvx</u></a>' })"></span>
         <br /><br />
         <div class="links">
@@ -12,18 +12,18 @@
                     ><button>{{ $t('Settings.About.LinksDocs') }}</button></a
                 >
                 <a
-                    href="https://github.com/cwilvx/swingmusic"
+                    href="https://github.com/BubbyWoodz/swingmusic"
                     target="_blank"
                     ><button>{{ $t('Settings.About.LinksGitHub') }}</button></a
                 >
                 <a
-                    href="https://github.com/cwilvx/swingmusic/issues/new/choose"
+                    href="https://github.com/BubbyWoodz/swingmusic/issues/new/choose"
                     target="_blank"
                 >
                     <button>{{ $t('Settings.About.LinksIssue') }}</button>
                 </a>
                 <a
-                    href="https://github.com/cwilvx/swingmusic/blob/master/.github/contributing.md"
+                    href="https://github.com/BubbyWoodz/swingmusic/blob/feature-base/.github/contributing.md"
                     target="_blank"
                     ><button>{{ $t('Settings.About.LinksContribute') }}</button></a
                 >
