@@ -6,7 +6,7 @@ import { useFuse } from '@/utils'
 import { paths } from '@/config'
 import { FuseTrackOptions } from '@/enums'
 import { Artist, FuseResult, Playlist, Track } from '@/interfaces'
-import { getPlaylist, removeBannerImage, uploadPlaylistArtwork } from '@/requests/playlists'
+import { getPlaylist, deletePlaylistArtwork, uploadPlaylistArtwork } from '@/requests/playlists'
 import setColorsToStore from '@/utils/colortools/setColorsToStore'
 import { Routes, router } from '@/router'
 import { track_limit } from '../content-width'
@@ -53,7 +53,7 @@ export default defineStore('playlist-tracks', {
         },
         async removeBanner() {
             const { duration } = this.info
-            const res = await removeBannerImage(this.info.id)
+            const res = await deletePlaylistArtwork(this.info.id)
 
             if (!res) return
 
