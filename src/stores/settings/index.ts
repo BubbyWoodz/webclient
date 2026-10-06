@@ -4,7 +4,7 @@ import { xxl } from '@/composables/useBreakpoints'
 import { DBSettings, contextChildrenShowMode } from '@/enums'
 import { pluginSetActive, updatePluginSettings } from '@/requests/plugins'
 
-import { updateConfig } from '@/requests/settings'
+import { updateConfig, updateTranscodePrefs } from '@/requests/settings'
 import { usePlayer } from '@/stores/player'
 import { content_width } from '../content-width'
 import { getLastFmApiSig } from '@/context_menus/hashing'
@@ -50,7 +50,7 @@ export default defineStore('settings', {
         // client
         useCircularArtistImg: true,
         nowPlayingTrackOnTabTitle: true,
-        streaming_quality: 'original',
+        streaming_quality: 'auto',
         streaming_container: 'mp3',
 
         // plugins
@@ -432,8 +432,13 @@ export default defineStore('settings', {
 
             this.lastfm_session_key = ''
         },
-        setStreamingQuality(quality: string) {
+        async setStreamingQuality(quality: string) {
             this.streaming_quality = quality
+            try {
+                await updateTranscodePrefs(quality)
+            } catch (e) {
+                console.error('Failed to sync transcode preference:', e)
+            }
         },
         setStatsGroup(group: string) {
             this.statsgroup = group
