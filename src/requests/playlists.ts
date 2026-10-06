@@ -278,6 +278,57 @@ export async function removeBannerImage(playlistid: number) {
     new Notification(t('Requests.Playlists.BannerImageRemovedError'), NotifType.Error)
 }
 
+// ======== REVERB: dedicated custom artwork endpoints ========
+
+/**
+ * Uploads custom artwork for a playlist.
+ * Uses the dedicated POST /playlists/<id>/artwork endpoint.
+ * @param pid The playlist id.
+ * @param file The image file (jpeg, png or webp).
+ * @returns The server-returned image filename, or null on failure.
+ */
+export async function uploadPlaylistArtwork(pid: number | string, file: File): Promise<string | null> {
+    const formData = new FormData()
+    formData.append('image', file)
+
+    const { data, status } = await useAxios({
+        url: `${basePlaylistUrl}/${pid}/artwork`,
+        method: 'POST',
+        props: formData,
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+    })
+
+    if (status === 200 && data) {
+        new Notification(t('Requests.Playlists.Updated'))
+        return data.image as string
+    }
+
+    new Notification(t('Requests.Playlists.ErrUnsupportedImage'), NotifType.Error)
+    return null
+}
+
+/**
+ * Removes custom artwork from a playlist, falling back to default.
+ * Uses the dedicated DELETE /playlists/<id>/artwork endpoint.
+ * @param pid The playlist id.
+ */
+export async function deletePlaylistArtwork(pid: number | string): Promise<Playlist | null> {
+    const { data, status } = await useAxios({
+        url: `${basePlaylistUrl}/${pid}/artwork`,
+        method: 'DELETE',
+    })
+
+    if (status === 200 && data) {
+        new Notification(t('Requests.Playlists.BannerImageRemoved'))
+        return data.playlist as Playlist
+    }
+
+    new Notification(t('Requests.Playlists.BannerImageRemovedError'), NotifType.Error)
+    return null
+}
+
 export async function pinUnpinPlaylist(pid: number) {
     const { status } = await useAxios({
         url: paths.api.playlist.base + `/${pid}/pin_unpin`,
