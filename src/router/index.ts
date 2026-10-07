@@ -178,14 +178,6 @@ const Stats = {
     component: StatsView,
 }
 
-const ReplayView = () => import('@/views/Replay/index.vue')
-
-const Replay = {
-    path: '/replay',
-    name: 'ReplayView',
-    component: ReplayView,
-}
-
 const ArtistListView = {
     ...AlbumListView,
     path: '/artists',
@@ -237,7 +229,6 @@ const routes = [
     AlbumListView,
     ArtistListView,
     Stats,
-    Replay,
     Mix,
     MixList,
     PageView,
@@ -264,7 +255,6 @@ const Routes = {
     AlbumList: AlbumListView.name,
     ArtistList: ArtistListView.name,
     Stats: Stats.name,
-    Replay: Replay.name,
     Mix: Mix.name,
     MixList: MixList.name,
     Page: PageView.name,
